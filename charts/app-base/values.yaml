@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: ""
+  tag: "latest"
+
+ingress:
+  enabled: true
+  className: nginx
+  host: ""
+  clusterIssuer: letsencrypt-prod
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 256Mi

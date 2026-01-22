@@ -1,0 +1,7 @@
+postgres:
+  user: postgres
+  password: Andor@12345
+  database: principaldb
+
+persistence:
+  size: 10Gi

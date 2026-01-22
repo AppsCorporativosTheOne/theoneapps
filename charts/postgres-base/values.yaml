@@ -1,0 +1,15 @@
+image:
+  repository: postgres
+  tag: "16"
+
+postgres:
+  user: postgres
+  password: Andor@12345
+  database: principaldb
+
+service:
+  port: 5432
+
+persistence:
+  enabled: true
+  size: 5Gi

@@ -1,0 +1,8 @@
+mysql:
+  rootPassword: root123
+  database: principaldb
+  user: appuser
+  password: Andor@12345
+
+persistence:
+  size: 10Gi
