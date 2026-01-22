@@ -11,7 +11,7 @@ spec:
     path: charts/postgres-base
     helm:
       valueFiles:
-        - ../../values/databases/postgres.yaml
+        - values/databases/postgres.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: databases
