@@ -1,0 +1,19 @@
+namespace: databases-dev
+
+image:
+  repository: postgres
+  tag: "15"
+
+auth:
+  username: devuser
+  password: theon3@12345
+  database: app_dev
+
+service:
+  type: NodePort
+  port: 5432
+  nodePort: 30432
+
+persistence:
+  enabled: true
+  size: 5Gi
