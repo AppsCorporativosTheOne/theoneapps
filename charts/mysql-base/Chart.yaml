@@ -3,3 +3,4 @@ name: mysql-base
 description: Base chart para MySQL
 type: application
 version: 1.0.0
+appVersion: "8.0"

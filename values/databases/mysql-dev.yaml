@@ -1,9 +1,5 @@
 namespace: databases-dev
 
-image:
-  repository: mysql
-  tag: "8.0"
-
 auth:
   rootPassword: devroot
   database: app_dev

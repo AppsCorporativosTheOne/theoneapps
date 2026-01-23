@@ -1,13 +1,16 @@
+namespace: postgres-databases
+
 image:
   repository: postgres
   tag: "16"
 
-postgres:
+auth:
   user: postgres
   password: Andor@12345
   database: principaldb
 
 service:
+  type: ClusterIP 
   port: 5432
 
 persistence:

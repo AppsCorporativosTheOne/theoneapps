@@ -1,14 +1,17 @@
+namespace: mysql-databases
+
 image:
   repository: mysql
   tag: "8.0"
 
-mysql:
+auth:
   rootPassword: root
   database: principaldb
   user: appuser
   password: Andor@12345
 
 service:
+  type: ClusterIP
   port: 3306
 
 persistence:
