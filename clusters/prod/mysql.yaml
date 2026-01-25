@@ -11,7 +11,7 @@ spec:
     path: charts/mysql-base
     helm:
       valueFiles:
-        - values/databases/mysql.yaml
+        - ../../values/databases/mysql.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: databases
