@@ -1,19 +1,19 @@
-namespace: databases-dev
+namespace: databases-qa
 
 image:
   repository: mysql
   tag: "8.0"
 
 auth:
-  rootPassword: devroot
-  database: app_dev
-  user: devuser
+  rootPassword: qaroot
+  database: app_qa
+  user: qauser
   password: theon3@12345
 
 service:
   type: NodePort
   port: 3306
-  nodePort: 30306
+  nodePort: 30307
 
 persistence:
   enabled: true

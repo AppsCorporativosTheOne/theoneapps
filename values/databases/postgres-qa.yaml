@@ -1,18 +1,18 @@
-namespace: databases-dev
+namespace: databases-qa
 
 image:
   repository: postgres
   tag: "15"
 
 auth:
-  user: devuser
+  user: qauser
   password: theon3@12345
-  database: app_dev
+  database: app_qa
 
 service:
   type: NodePort
   port: 5432
-  nodePort: 30432
+  nodePort: 30433
 
 persistence:
   enabled: true

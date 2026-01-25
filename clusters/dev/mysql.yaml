@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mysql
+  name: mysql-dev
   namespace: argocd
 spec:
   project: default
@@ -11,10 +11,10 @@ spec:
     path: charts/mysql-base
     helm:
       valueFiles:
-        - values/databases/mysql.yaml
+        - values/databases/mysql-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: databases
+    namespace: databases-dev
   syncPolicy:
     automated:
       prune: true

@@ -1,4 +1,5 @@
-namespace: mysql-databases
+# Namespace onde o recurso será criado (opcional, pode ser definido no ArgoCD)
+namespace: ""
 
 image:
   repository: mysql
@@ -11,8 +12,9 @@ auth:
   password: Andor@12345
 
 service:
-  type: ClusterIP
+  type: ClusterIP  # ClusterIP, NodePort ou LoadBalancer
   port: 3306
+  nodePort: null  # Apenas necessário se type for NodePort
 
 persistence:
   enabled: true

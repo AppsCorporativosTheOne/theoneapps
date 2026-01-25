@@ -1,7 +1,18 @@
-postgres:
+namespace: databases
+
+image:
+  repository: postgres
+  tag: "16"
+
+auth:
   user: postgres
   password: Andor@12345
   database: principaldb
 
+service:
+  type: ClusterIP
+  port: 5432
+
 persistence:
+  enabled: true
   size: 10Gi

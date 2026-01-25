@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: {{ .Release.Name }}
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}
 spec:
   serviceName: {{ .Release.Name }}
   replicas: 1
@@ -20,11 +23,11 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_USER
-              value: {{ .Values.postgres.user }}
+              value: {{ .Values.auth.user }}
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgres.password }}
+              value: {{ .Values.auth.password }}
             - name: POSTGRES_DB
-              value: {{ .Values.postgres.database }}
+              value: {{ .Values.auth.database }}
           volumeMounts:
             - name: data
               mountPath: /var/lib/postgresql/data
