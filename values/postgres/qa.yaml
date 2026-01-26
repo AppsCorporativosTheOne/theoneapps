@@ -1,0 +1,8 @@
+namespace: databases-qa
+service:
+  type: NodePort
+  nodePort: 30433
+auth:
+  username: qauser
+  password: qapass
+  database: qadb

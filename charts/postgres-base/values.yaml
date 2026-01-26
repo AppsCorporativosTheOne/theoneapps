@@ -1,0 +1,38 @@
+nameOverride: ""
+fullnameOverride: ""
+
+namespace: databases
+
+image:
+  repository: postgres
+  tag: "15"
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
+
+auth:
+  username: app
+  password: app
+  database: app
+
+service:
+  type: ClusterIP
+  port: 5432
+  nodePort: null
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: ""
+
+securityContext:
+  runAsUser: 999
+  runAsGroup: 999
+  fsGroup: 999
