@@ -11,7 +11,7 @@ spec:
     path: charts/postgres-base
     helm:
       valueFiles:
-        - ../../values/databases/postgres-qa.yaml
+        - values/databases/postgres-qa.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: databases-qa
