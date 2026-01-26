@@ -1,39 +1,37 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Release.Name }}
-  {{- if .Values.namespace }}
+  name: {{ include "mysql.fullname" . }}
   namespace: {{ .Values.namespace }}
-  {{- end }}
 spec:
-  serviceName: {{ .Release.Name }}
+  serviceName: {{ include "mysql.fullname" . }}
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ include "mysql.fullname" . }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        app: {{ include "mysql.fullname" . }}
     spec:
+      serviceAccountName: {{ include "mysql.fullname" . }}
+      securityContext:
+        fsGroup: {{ .Values.securityContext.fsGroup }}
       containers:
         - name: mysql
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 3306
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: {{ .Values.auth.rootPassword }}
-            - name: MYSQL_DATABASE
-              value: {{ .Values.auth.database }}
-            - name: MYSQL_USER
-              value: {{ .Values.auth.user }}
-            - name: MYSQL_PASSWORD
-              value: {{ .Values.auth.password }}
+          envFrom:
+            - secretRef:
+                name: {{ include "mysql.fullname" . }}-secret
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-data
+            claimName: {{ include "mysql.fullname" . }}-pvc

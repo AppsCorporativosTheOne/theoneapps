@@ -1,21 +1,39 @@
-# Namespace onde o recurso será criado (opcional, pode ser definido no ArgoCD)
-namespace: ""
+nameOverride: ""
+fullnameOverride: ""
+
+namespace: databases
 
 image:
   repository: mysql
   tag: "8.0"
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
 
 auth:
   rootPassword: root
-  database: principaldb
-  user: appuser
-  password: Andor@12345
+  database: app
+  username: app
+  password: app
 
 service:
-  type: ClusterIP  # ClusterIP, NodePort ou LoadBalancer
+  type: ClusterIP
   port: 3306
-  nodePort: null  # Apenas necessário se type for NodePort
+  nodePort: null
 
 persistence:
   enabled: true
-  size: 5Gi
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: ""
+
+securityContext:
+  runAsUser: 999
+  runAsGroup: 999
+  fsGroup: 999

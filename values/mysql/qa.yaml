@@ -1,0 +1,7 @@
+namespace: databases-qa
+
+service:
+  type: NodePort
+  nodePort: 30307
+
+

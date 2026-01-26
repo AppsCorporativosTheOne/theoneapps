@@ -1,0 +1,20 @@
+namespace: databases-dev
+
+service:
+  type: NodePort
+  nodePort: 30306
+
+resources:
+  limits:
+    cpu: "300m"
+    memory: "256Mi"
+
+persistence:
+  size: 5Gi
+
+auth:
+  rootPassword: root
+  database: devdb
+  username: devuser
+  password: devpass
+

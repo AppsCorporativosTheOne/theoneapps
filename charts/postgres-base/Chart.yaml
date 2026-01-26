@@ -1,5 +1,0 @@
-apiVersion: v2
-name: postgres-base
-description: Base chart para PostgreSQL
-type: application
-version: 1.0.0

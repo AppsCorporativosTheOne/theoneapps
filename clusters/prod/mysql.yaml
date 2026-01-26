@@ -1,21 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mysql
+  name: mysql-prod
   namespace: argocd
 spec:
   project: default
+
   source:
     repoURL: https://github.com/AppsCorporativosTheOne/theoneapps.git
     targetRevision: main
     path: charts/mysql-base
     helm:
       valueFiles:
-        - ../../values/databases/mysql.yaml
+        - ../../values/mysql/prod.yaml
+
   destination:
     server: https://kubernetes.default.svc
     namespace: databases
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

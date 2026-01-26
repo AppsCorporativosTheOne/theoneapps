@@ -1,5 +1,0 @@
-apiVersion: v2
-name: app-base
-description: Base chart para aplicações frontend
-type: application
-version: 1.0.0

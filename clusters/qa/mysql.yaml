@@ -5,17 +5,22 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   source:
     repoURL: https://github.com/AppsCorporativosTheOne/theoneapps.git
     targetRevision: main
     path: charts/mysql-base
     helm:
       valueFiles:
-        - values/databases/mysql-qa.yaml
+        - ../../values/mysql/qa.yaml
+
   destination:
     server: https://kubernetes.default.svc
     namespace: databases-qa
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

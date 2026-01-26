@@ -1,0 +1,4 @@
+namespace: databases
+
+service:
+  type: ClusterIP
